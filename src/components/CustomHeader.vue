@@ -74,6 +74,7 @@ export default CustomHeader;
 
       white-space: nowrap;
       font-weight: bolder;
+      font-size: 1.5rem;
     }
   }
 }
