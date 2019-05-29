@@ -28,16 +28,25 @@ export default App;
 <style>
 * {
   box-sizing: border-box;
+  transition: none 0.3s ease-in-out;
 }
 
 html {
   font-size: 16px;
+
+  /* avoid text dragging for clean UX, not for copy & paste */
+  user-select: none;
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
 }
 </style>
 
