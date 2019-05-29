@@ -1,6 +1,6 @@
 {
-  "name": "client-web",
-  "short_name": "client-web",
+  "name": "the Muse",
+  "short_name": "the Muse",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
