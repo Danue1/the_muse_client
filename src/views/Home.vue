@@ -1,11 +1,27 @@
 <template>
-  <div>Home</div>
+  <div class="layout">
+    <h2>추천 앨범</h2>
+
+    <preview-albums :info="previewAlbums"/>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 
-const Home = Vue.extend();
+import PreviewAlbums from '../components/PreviewAlbums.vue';
+import { previewAlbums } from './Home.dummy';
+
+const Home = Vue.extend({
+  components: {
+    PreviewAlbums,
+  },
+  data() {
+    return {
+      previewAlbums,
+    };
+  },
+});
 
 export default Home;
 </script>
