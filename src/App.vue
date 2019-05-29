@@ -25,9 +25,13 @@ export default App;
 </script>
 
 
-<style lang="scss">
+<style>
 * {
   box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
 }
 
 html,
