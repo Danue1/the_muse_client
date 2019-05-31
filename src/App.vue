@@ -7,6 +7,9 @@
         <router-view/>
       </div>
     </div>
+
+    <playlist/>
+    <track-selector/>
   </div>
 </template>
 
@@ -14,16 +17,19 @@
 import Vue from 'vue';
 
 import CustomHeader from './components/CustomHeader.vue';
+import Playlist from './components/Playlist.vue';
+import TrackSelector from './components/TrackSelector.vue';
 
 const App = Vue.extend({
   components: {
     CustomHeader,
+    Playlist,
+    TrackSelector,
   },
 });
 
 export default App;
 </script>
-
 
 <style>
 * {
@@ -58,7 +64,6 @@ a {
   height: calc(100vh - 3.5rem);
 
   margin-top: 3.5rem;
-  padding: 0 1rem;
 
   .layout {
     max-width: 64rem;

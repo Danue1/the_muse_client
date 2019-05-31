@@ -1,13 +1,15 @@
 <template>
-  <svg viewBox="-1 -1 65 65">
+  <svg viewBox="0 0 64 64">
     <slot></slot>
   </svg>
 </template>
 
 <style>
 svg {
+  display: block;
+
   stroke: currentColor;
-  stroke-width: 2px;
+  stroke-width: 4px;
   fill: none;
 }
 </style>
