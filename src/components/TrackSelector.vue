@@ -35,10 +35,7 @@ import PlusIcon from '../icons/Plus.vue';
 import CancelIcon from '../icons/Cross.vue';
 import { TrackModel } from '../Models';
 import { ActionKind as SelectedTracksActionKind } from '../store/SelectedTracks';
-import {
-  ActionKind as PlaylistActionKind,
-  MutationKind as PlaylistMutationKind,
-} from '../store/Playlist';
+import { ActionKind as PlaylistActionKind } from '../store/Playlist';
 
 const SelectedTracksStore = namespace('SelectedTracks');
 const PlaylistStore = namespace('Playlist');
@@ -54,7 +51,7 @@ class TrackSelector extends Vue {
   @SelectedTracksStore.State(({ selected }) => selected)
   private readonly tracks!: TrackModel[];
 
-  @PlaylistStore.Mutation(PlaylistMutationKind.Set)
+  @PlaylistStore.Action(PlaylistActionKind.Set)
   private readonly setTracksToStore!: (tracks: TrackModel[]) => void;
 
   @PlaylistStore.Action(PlaylistActionKind.Add)

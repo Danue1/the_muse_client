@@ -36,6 +36,7 @@ export enum MutationKind {
 
   Play = 'Play',
   Pause = 'Pause',
+  Next = 'Next',
 }
 
 export const mutations: MutationTree<Writable<State>> = {
@@ -68,16 +69,42 @@ export const mutations: MutationTree<Writable<State>> = {
       state.currentAudio.pause();
     }
   },
+
+  [MutationKind.Next](state) {
+    state.index = state.index === state.tracks.length - 1 ? 0 : state.index + 1;
+
+    if (state.currentAudio) {
+      state.currentAudio.stop();
+    }
+    const currentTrack = state.tracks[state.index];
+    state.currentAudio = new Howl({ src: currentTrack.audioLink });
+    state.currentAudio.play();
+  },
 };
 
 export enum ActionKind {
   Add = 'Add',
-  Remove = 'Remove',
+  Set = 'Set',
 }
 
 export const actions: ActionTree<State, {}> = {
   [ActionKind.Add]({ commit, getters }, tracks: TrackModel[]) {
     const addableTracks = tracks.filter(({ id }) => !getters.trackSet.has(id));
     commit(MutationKind.Add, addableTracks);
+  },
+
+  [ActionKind.Set]({ commit, state }, tracks: TrackModel[]) {
+    const playAudio = () => {
+      if (state.state === 'Playing') {
+        commit(MutationKind.Next);
+
+        state.currentAudio!.once('end', () => {
+          playAudio();
+        });
+      }
+    };
+
+    commit(MutationKind.Set, tracks);
+    state.currentAudio!.once('end', playAudio);
   },
 };
