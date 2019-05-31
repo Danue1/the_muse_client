@@ -1,6 +1,6 @@
 <template>
   <router-link :to="goTo">
-    <div class="preview-album layout">
+    <div class="preview-album">
       <div class="image-container">
         <div class="image" :style="imageStyle"/>
       </div>
@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 
 import { PreviewAlbumModel } from '../Models';
 
@@ -20,36 +20,36 @@ interface ImageStyle {
   readonly 'background-image': string;
 }
 
-const PreviewAlbum = Vue.extend({
-  props: {
-    info: PreviewAlbumModel,
-  },
-  computed: {
-    imageStyle(): ImageStyle {
-      return {
-        'background-image': `url(${this.info.thumnailLink})`,
-      };
-    },
-    goTo(): any {
-      return {
-        name: 'about',
-        params: {
-          imageId: this.info.to,
-        },
-      };
-    },
-  },
-});
+@Component
+class PreviewAlbum extends Vue {
+  @Prop()
+  private readonly info!: PreviewAlbumModel;
+
+  private get imageStyle() {
+    return {
+      'background-image': `url(${this.info.thumnailLink})`,
+    };
+  }
+
+  private get goTo() {
+    return {
+      name: 'about',
+      params: {
+        imageId: this.info.to,
+      },
+    };
+  }
+}
 
 export default PreviewAlbum;
 </script>
 
 <style lang="scss" scoped>
-.preview-album.layout {
+.preview-album {
   display: flex;
   flex-direction: column;
 
-  box-shadow: 0 0 0 1px hsl(0, 0%, 84%);
+  background-color: white;
 
   &:hover .image {
     transform: scale(1.1);
@@ -61,6 +61,8 @@ export default PreviewAlbum;
     position: relative;
 
     height: 12rem;
+
+    border-radius: 0.25rem;
 
     .image {
       position: absolute;
@@ -81,7 +83,7 @@ export default PreviewAlbum;
   .description-container {
     height: 4rem;
 
-    padding: 0.5rem;
+    padding: 0.5rem 0;
   }
 }
 </style>

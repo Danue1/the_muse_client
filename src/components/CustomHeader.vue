@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed-layout">
+  <div class="custom-header">
     <div class="layout">
       <div class="hamburger-icon">
         <hamburger/>
@@ -31,7 +31,7 @@ export default CustomHeader;
 </script>
 
 <style lang="scss" scoped>
-.fixed-layout {
+.custom-header {
   position: fixed;
   top: 0;
   left: 0;
@@ -39,7 +39,7 @@ export default CustomHeader;
   width: 100%;
   height: 3.5rem;
 
-  padding: 0 1rem;
+  padding: 0 0.5rem;
 
   background-color: white;
   box-shadow: 0 0 0 1px hsl(0, 0%, 84%);
