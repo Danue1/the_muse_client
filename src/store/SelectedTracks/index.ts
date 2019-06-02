@@ -41,6 +41,10 @@ export const actions: ActionTree<State, {}> = {
   },
 
   [ActionKind.Toggle]({ state, commit }, track: TrackModel) {
+    if (track.audioLink === null) {
+      return;
+    }
+
     if (state.selected.includes(track)) {
       commit(MutationKind.Remove, track);
     } else {

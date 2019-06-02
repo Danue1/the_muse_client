@@ -78,7 +78,10 @@ export default Playlist;
     align-items: center;
     grid-template-columns: 1fr min-content;
 
+    max-width: 64rem;
     height: 100%;
+
+    margin: 0 auto;
 
     .info {
       .title {

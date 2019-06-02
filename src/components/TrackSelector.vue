@@ -100,7 +100,10 @@ export default TrackSelector;
     align-items: center;
     grid-template-columns: 1fr min-content;
 
+    max-width: 64rem;
     height: 100%;
+
+    margin: 0 auto;
 
     // .left {
     // }
@@ -113,9 +116,18 @@ export default TrackSelector;
       .play,
       .add,
       .cancel {
+        cursor: pointer;
+
         display: grid;
         grid-auto-flow: column;
         align-items: center;
+
+        padding: 0.25rem;
+
+        &:hover {
+          background-color: hsl(0, 0%, 96%);
+          box-shadow: 0 0 0 1px hsl(0, 0%, 84%);
+        }
       }
 
       .play-icon,

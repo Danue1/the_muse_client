@@ -48,7 +48,7 @@ export const mutations: MutationTree<Writable<State>> = {
       state.currentAudio.unload();
     }
     const currentTrack = state.tracks[state.index];
-    state.currentAudio = new Howl({ src: currentTrack.audioLink });
+    state.currentAudio = new Howl({ src: currentTrack.audioLink! });
     state.currentAudio.play();
   },
 
@@ -77,7 +77,7 @@ export const mutations: MutationTree<Writable<State>> = {
       state.currentAudio.stop();
     }
     const currentTrack = state.tracks[state.index];
-    state.currentAudio = new Howl({ src: currentTrack.audioLink });
+    state.currentAudio = new Howl({ src: currentTrack.audioLink! });
     state.currentAudio.play();
   },
 };
