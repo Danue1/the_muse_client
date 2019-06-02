@@ -2,26 +2,31 @@
   <div class="layout">
     <h2>추천 앨범</h2>
 
-    <preview-albums :info="previewAlbums"/>
+    <preview-albums v-if="info.length" :info="info"/>
+
+    <div v-if="!info.length">앨범 목록을 불러오는 중입니다.</div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { Vue, Component } from 'vue-property-decorator';
 
 import PreviewAlbums from '../components/PreviewAlbums.vue';
-import { previewAlbums } from './Home.dummy';
+import { loadPreviewAlbums } from '../services';
+import { PreviewAlbumModel } from '../Models';
 
-const Home = Vue.extend({
+@Component({
   components: {
     PreviewAlbums,
   },
-  data() {
-    return {
-      previewAlbums,
-    };
-  },
-});
+})
+class Home extends Vue {
+  private info: PreviewAlbumModel[] = [];
+
+  private async created() {
+    this.info = await loadPreviewAlbums();
+  }
+}
 
 export default Home;
 </script>

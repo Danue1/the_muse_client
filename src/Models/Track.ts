@@ -3,6 +3,6 @@ export class TrackModel {
     public readonly id: number,
     public readonly name: string,
     public readonly artist: string,
-    public readonly audioLink: string,
+    public readonly audioLink: null | string,
   ) {}
 }

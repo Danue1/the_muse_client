@@ -46,13 +46,20 @@ export default PreviewAlbum;
 
 <style lang="scss" scoped>
 .preview-album {
+  overflow: hidden;
+
   display: flex;
   flex-direction: column;
 
   background-color: white;
+  border-radius: 0.25rem;
 
-  &:hover .image {
-    transform: scale(1.1);
+  &:hover {
+    background-color: hsl(0, 0%, 96%);
+
+    .image {
+      transform: scale(1.1);
+    }
   }
 
   .image-container {
@@ -62,7 +69,8 @@ export default PreviewAlbum;
 
     height: 12rem;
 
-    border-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
 
     .image {
       position: absolute;
@@ -83,7 +91,12 @@ export default PreviewAlbum;
   .description-container {
     height: 4rem;
 
-    padding: 0.5rem 0;
+    padding: 0.5rem;
+
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    border: 1px solid hsl(0, 0%, 84%);
+    border-top-width: 0;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="songtrack" :class="{'is-active': isClicked}">
+  <div class="songtrack" :class="{'no-audio': !hasAudio,  'is-active': isClicked}">
     <div class="info">
       <div class="name">{{info.name}}</div>
       <div class="artist">{{info.artist}}</div>
@@ -23,8 +23,8 @@ class SongTrack extends Vue {
   @Prop([Boolean])
   private readonly isClicked!: boolean;
 
-  private get audioLink(): string {
-    return this.info.audioLink;
+  private get hasAudio() {
+    return this.info.audioLink !== null;
   }
 }
 
@@ -47,6 +47,13 @@ export default SongTrack;
     &:hover {
       background-color: hsl(0, 0%, 96%);
     }
+  }
+
+  &.no-audio {
+    cursor: not-allowed;
+
+    color: hsl(0, 0%, 36%);
+    background-color: hsl(0, 0%, 96%);
   }
 
   &.is-active {

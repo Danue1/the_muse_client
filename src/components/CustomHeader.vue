@@ -5,7 +5,9 @@
         <hamburger/>
       </div>
 
-      <div class="title">the Muse</div>
+      <div class="title">
+        <router-link to="/">the Muse</router-link>
+      </div>
 
       <div class="search-icon">
         <search/>
@@ -32,6 +34,7 @@ export default CustomHeader;
 
 <style lang="scss" scoped>
 .custom-header {
+  z-index: 1000;
   position: fixed;
   top: 0;
   left: 0;
