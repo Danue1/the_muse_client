@@ -37,3 +37,9 @@ class About extends Vue {
 
 export default About;
 </script>
+
+<style lang="scss" scoped>
+.about {
+  margin-bottom: 6rem;
+}
+</style>
